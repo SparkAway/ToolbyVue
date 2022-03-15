@@ -16,63 +16,30 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 export default {
+
   name: 'Counter',
   data(){
     return {
-      sum:20,
-      number_1:0,
-      number_2:'',
-      temp:'',
-      sign:'',
-      numberList:[
-        0,1,2,3,4,5,6,7,8,9
-      ]
     }
   },
   methods:{
     handleInputFunc(index){
-      if(this.sign===''){
-        this.temp+=index;
-        this.number_1 = Number(this.temp) ;
-      }else{
-        this.temp+=index;
-        this.number_2 = Number(this.temp);
-      }
+      this.$store.commit('handleInputFunc',index);
     },
     handleDoFunc(sig){
-      this.sign = sig;
-      this.temp = '';
+      this.$store.commit('handleDoFunc',sig);
     },
     showResult(){
-      this.temp='';
-      if(this.sign==='+'){
-        this.number_1+=this.number_2;
-        this.number_2 = '';
-        this.sign='';
-      }
-      if(this.sign==='-'){
-        this.number_1-=this.number_2;
-        this.number_2 = '';
-        this.sign='';
-      }
-      if(this.sign==='*'){
-        this.number_1*=this.number_2;
-        this.number_2 = '';
-        this.sign='';
-      }
-      if(this.sign==='/'){
-        this.number_1/=this.number_2;
-        this.number_2 = '';
-        this.sign='';
-      }
+     this.$store.commit('showResult');
     },
     clear(){
-      this.number_1=0;
-      this.number_2='';
-      this.sign='';
-      this.temp = '';
+      this.$store.commit('clear');
     }
+  },
+  computed:{
+    ...mapState(['numberList','number_1','number_2','sign'])
   }
 }
 </script>

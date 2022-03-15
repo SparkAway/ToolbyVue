@@ -63,7 +63,7 @@
             "parentId": 0,
             "menuName": "信息管理",
             "url": "",
-            "icon": "el-icon-setting",
+            "icon": "el-icon-s-order",
             "orderNum": 1,
             "open": 1,
             "disabled": false,
@@ -71,7 +71,7 @@
             "type": 0,
             "children": [
               {
-                "id": 226,
+                "id": 11,
                 "parentId": 1,
                 "menuName": "通讯录信息管理",
                 "url": "/users",
@@ -84,11 +84,11 @@
                 "children": []
               },
               {
-                "id": 253,
+                "id": 12,
                 "parentId": 1,
                 "menuName": "备忘录信息管理",
                 "url": "/beiwanglu",
-                "icon": "el-icon-star-off",
+                "icon": "el-icon-document",
                 "orderNum": 1,
                 "open": 0,
                 "disabled": false,
@@ -97,7 +97,7 @@
                 "children": []
               },
               {
-                "id": 321,
+                "id": 13,
                 "parentId": 1,
                 "menuName": "个人财务管理",
                 "url": "/caiwu",
@@ -113,11 +113,11 @@
             ]
           },
           {
-            "id": 312,
+            "id": 2,
             "parentId": 0,
-            "menuName": "功能",
+            "menuName": "杂项",
             "url": null,
-            "icon": "el-icon-s-goods",
+            "icon": "el-icon-menu",
             "orderNum": 2,
             "open": 0,
             "disabled": false,
@@ -125,11 +125,11 @@
             "type": 0,
             "children": [
               {
-                "id": 229,
-                "parentId": 312,
+                "id": 21,
+                "parentId": 2,
                 "menuName": "工具",
                 "url": "",
-                "icon": "el-icon-date",
+                "icon": "el-icon-s-tools",
                 "orderNum": 1,
                 "open": 1,
                 "disabled": false,
@@ -137,11 +137,11 @@
                 "type": 0,
                 "children": [
                   {
-                    "id": 230,
-                    "parentId": 229,
+                    "id": 211,
+                    "parentId": 21,
                     "menuName": "计算器",
                     "url": "/counter",
-                    "icon": "el-icon-date",
+                    "icon": "el-icon-edit-outline",
                     "orderNum": 1,
                     "open": 1,
                     "disabled": false,
@@ -150,11 +150,11 @@
                     "children": []
                   },
                   {
-                    "id": 267,
-                    "parentId": 229,
+                    "id": 212,
+                    "parentId": 21,
                     "menuName": "时钟",
                     "url": "/clock",
-                    "icon": "el-icon-goods",
+                    "icon": "el-icon-time",
                     "orderNum": 2,
                     "open": 0,
                     "disabled": false,
@@ -163,11 +163,11 @@
                     "children": []
                   },
                   {
-                    "id": 268,
-                    "parentId": 229,
+                    "id": 213,
+                    "parentId": 21,
                     "menuName": "日历",
                     "url": "/calendar",
-                    "icon": "el-icon-star-off",
+                    "icon": "el-icon-date",
                     "orderNum": 2,
                     "open": 0,
                     "disabled": false,
@@ -176,11 +176,11 @@
                     "children": []
                   },
                   {
-                    "id": 270,
-                    "parentId": 229,
-                    "menuName": "功能",
-                    "url": "/outStocks",
-                    "icon": "el-icon-goods",
+                    "id": 214,
+                    "parentId": 21,
+                    "menuName": "待办事项",
+                    "url": "/todo",
+                    "icon": "el-icon-tickets",
                     "orderNum": 5,
                     "open": 1,
                     "disabled": false,
@@ -188,19 +188,7 @@
                     "type": 0,
                     "children": []
                   },
-                  {
-                    "id": 316,
-                    "parentId": 229,
-                    "menuName": "功能",
-                    "url": "/stocks",
-                    "icon": "el-icon-tickets",
-                    "orderNum": 5,
-                    "open": 0,
-                    "disabled": false,
-                    "perms": "",
-                    "type": 0,
-                    "children": []
-                  }
+
                 ]
               }
 

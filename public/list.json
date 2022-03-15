@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "thing": "吃饭",
+    "info": true
+  },
+  {
+    "id": "2",
+    "thing": "睡觉",
+    "info": true
+  },
+  {
+    "id":"3",
+    "thing":"打游戏",
+    "info": false
+  }
+]

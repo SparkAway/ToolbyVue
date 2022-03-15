@@ -43,9 +43,15 @@ const routes = [
       },
       {
         path: '/calendar',
-        name:'calendar',
-        component:()=>import('../views/tool/calendar')
+        name: 'calendar',
+        component: () => import('../views/tool/calendar')
+      },
+      {
+        path: '/todo',
+        name: 'todo',
+        component: () => import('../views/tool/todo')
       }
+
     ]
   },
   {
