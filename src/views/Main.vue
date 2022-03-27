@@ -181,6 +181,19 @@
                     "menuName": "待办事项",
                     "url": "/todo",
                     "icon": "el-icon-tickets",
+                    "orderNum": 2,
+                    "open": 1,
+                    "disabled": false,
+                    "perms": "",
+                    "type": 0,
+                    "children": []
+                  },
+                  {
+                    "id": 215,
+                    "parentId": 21,
+                    "menuName": "父子组件传值",
+                    "url": "/childtofather",
+                    "icon": "el-icon-tickets",
                     "orderNum": 5,
                     "open": 1,
                     "disabled": false,
@@ -188,7 +201,45 @@
                     "type": 0,
                     "children": []
                   },
-
+                  {
+                    "id": 216,
+                    "parentId": 21,
+                    "menuName": "双向绑定",
+                    "url": "/vuedoublebind",
+                    "icon": "el-icon-tickets",
+                    "orderNum": 5,
+                    "open": 1,
+                    "disabled": false,
+                    "perms": "",
+                    "type": 0,
+                    "children": []
+                  },
+                  {
+                    "id": 217,
+                    "parentId": 21,
+                    "menuName": "圣杯布局",
+                    "url": "/shengbei",
+                    "icon": "el-icon-tickets",
+                    "orderNum": 5,
+                    "open": 1,
+                    "disabled": false,
+                    "perms": "",
+                    "type": 0,
+                    "children": []
+                  },
+                  {
+                    "id": 218,
+                    "parentId": 21,
+                    "menuName": "双飞翼布局",
+                    "url": "/shuangfeiyi",
+                    "icon": "el-icon-tickets",
+                    "orderNum": 5,
+                    "open": 1,
+                    "disabled": false,
+                    "perms": "",
+                    "type": 0,
+                    "children": []
+                  },
                 ]
               }
 

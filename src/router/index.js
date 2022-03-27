@@ -50,7 +50,28 @@ const routes = [
         path: '/todo',
         name: 'todo',
         component: () => import('../views/tool/todo')
+      },
+      {
+        path: '/childtofather',
+        name: 'childtofather',
+        component: () => import('../views/tool/ChildToFather')
+      },
+      {
+        path: '/vuedoublebind',
+        name: 'vuedoublebind',
+        component: () => import('../views/tool/VuedoubleBind')
+      },
+      {
+        path: '/shengbei',
+        name: 'shengbei',
+        component: () => import('../views/tool/shengbeibuju')
+      },
+      {
+        path: '/shuangfeiyi',
+        name: 'shuangfeiyi',
+        component: () => import('../views/tool/shuangfeiyi')
       }
+
 
     ]
   },
