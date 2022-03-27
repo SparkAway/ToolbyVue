@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import { use } from 'element-ui/src/locale'
+import { getLogin } from '@/api/user'
+import router from '@/router'
 Vue.use(Vuex)
-
 export default new Vuex.Store({
   state: {
     //待办事项
@@ -27,7 +29,14 @@ export default new Vuex.Store({
     month:'',
     day:'',
     weekday:['日','一','二','三','四','五','六'],
-    dayList:[31,28,31,30,31,30,31,31,30,31,30,31]
+    dayList:[31,28,31,30,31,30,31,31,30,31,30,31],
+    //users的state
+    loginform: {
+      user:'',
+      pwd:''
+    },
+    result:null,
+    title:''
   },
   mutations: {
     //待办事项
@@ -148,13 +157,23 @@ export default new Vuex.Store({
       let hh = time.getHours();
       let mm = time.getMinutes();
       let ss = time.getSeconds();
-      document.getElementById('1').innerText=Math.floor(hh/10);
-      document.getElementById('2').innerText=hh%10;
-      document.getElementById('4').innerText=Math.floor(mm/10);
-      document.getElementById('5').innerText=mm%10;
-      document.getElementById('7').innerText=Math.floor(ss/10);
-      document.getElementById('8').innerText=ss%10;
-    }
+      // document.getElementById('1').innerText=Math.floor(hh/10);
+      // document.getElementById('2').innerText=hh%10;
+      // document.getElementById('4').innerText=Math.floor(mm/10);
+      // document.getElementById('5').innerText=mm%10;
+      // document.getElementById('7').innerText=Math.floor(ss/10);
+      // document.getElementById('8').innerText=ss%10;
+    },
+    //users的mutations
+    setLogin(state,param){
+      state.result=param.result
+    },
+    setUser(state,n){
+      state.loginform.user=n
+    },
+    setPwd(state,n){
+      state.loginform.pwd=n
+    },
   },
   actions: {
     getList(context){
@@ -162,14 +181,53 @@ export default new Vuex.Store({
           console.log(data);
           context.commit('initlist',data)
       })
+    },
+    //users的action
+    getLogin(context){
+      getLogin().then(res => {
+        console.log(res.data);
+        console.log(1);
+        context.commit('setLogin',{result:res.data})
+        let len = res.data.length;
+        let userNameArr = [];
+        let passWordArr = [];
+        let ses = window.sessionStorage;
+        for (let i = 0; i < len; i++) {
+          userNameArr.push(res.data[i].username);
+          passWordArr.push(res.data[i].password);
+        }
+        if (userNameArr.indexOf(this.state.loginform.user) === -1) {
+          alert("账号不存在！");
+        } else {
+          const index = userNameArr.indexOf(this.state.loginform.user)
+          if (passWordArr[index] === this.state.loginform.pwd) {
+            // 把token放在sessionStorage中
+            ses.setItem("data", res.data[index].token);
+            console.log(ses,'ses')
+            this.state.title=res.data[index].usertitle
+            //跳转到首页
+            router.push("/Main");
+          } else {
+            alert("密码错误！");
+          }
+        }
+      });
+    },
+    loginOut(){
+      // 注销后 清除session信息 ，并返回登录页
+      console.log(4);
+      window.sessionStorage.removeItem('data');
+      console.log(2);
+      router.push('/Login');
     }
-  },
-  modules: {
   },
   getters:{
     //未完成的任务数量
     unDonelength(state){
       return state.list.filter(x=>x.info===false).length
     }
-  }
+  },
+  modules: {
+
+  },
 })

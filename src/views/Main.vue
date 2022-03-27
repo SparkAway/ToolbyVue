@@ -15,7 +15,7 @@
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item icon="el-icon-house">系统首页</el-dropdown-item>
             <el-dropdown-item icon="el-icon-ship">交流讨论</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-switch-button">退出登录</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-switch-button" @click.native="loginOut">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -50,7 +50,6 @@
 
 <script>
   import MenuTree from '../components/MenuTree'
-
   export default {
     name: 'Main',
     data () {
@@ -262,7 +261,14 @@
       handleClose (key, keyPath) {
         console.log(key, keyPath)
       },
-    }
+      loginOut(){
+        this.$store.dispatch('loginOut')
+      },
+      loginOut1(){
+        console.log('点击了退出')
+      }
+    },
+
   }
 </script>
 

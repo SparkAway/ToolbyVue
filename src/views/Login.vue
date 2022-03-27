@@ -7,11 +7,11 @@
             </div>
             <!--表单-->
           <el-form ref="loginform" :model="loginform" :rules="loginRules" label-width="0px" class="login_Form">
-            <el-form-item  prop="username">
-              <el-input v-model="loginform.username" prefix-icon="el-icon-user-solid"></el-input>
+            <el-form-item  prop="user">
+              <el-input v-model="loginform.user" prefix-icon="el-icon-user-solid"></el-input>
             </el-form-item>
-            <el-form-item  prop="password">
-              <el-input v-model="loginform.password" prefix-icon="el-icon-lock"></el-input>
+            <el-form-item  prop="pwd">
+              <el-input v-model="loginform.pwd" prefix-icon="el-icon-lock"></el-input>
             </el-form-item>
             <el-form-item class="login_btn">
               <el-button @click="submitForm('loginform')" >立即登录</el-button>
@@ -34,31 +34,48 @@ export default {
       loginRules:{
         username:[
           {required:true ,message:'请输入用户名',trigger:'blur'},
-          {min:3,max:5,message: '长度在3到5个字符之间',trigger: 'blur'}
+          {min:5,max:13,message: '长度在5到13个字符之间',trigger: 'blur'}
         ],
         password:[
           {required:true ,message:'请输入登录密码',trigger:'blur'},
-          {min:3,max:5,message: '长度在3到5个字符之间',trigger: 'blur'}
+          {min:6,max:11,message: '长度在7到11个字符之间',trigger: 'blur'}
         ]
       }
     }
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate((valid)=>{
-        if(valid){
-          console.log(valid);
-          this.$router.push("/Main");
-        }else{
-          console.log('login failed');
-          return false
+      this.user=this.loginform.user
+      this.pwd=this.loginform.pwd
+      this.$refs.loginform.validate(valid => {
+        if (valid) {
+          this.$store.dispatch('getLogin')
+        } else {
+          console.log("用户名或密码错误");
         }
-      })
+      });
     },
     resetForm(forName){
       this.$refs[forName].resetFields();
-    }
-
+    },
+  },
+  computed:{
+    user: {
+      get() {
+        return this.$store.state.loginform.user;
+      },
+      set(newVal) {
+        this.$store.commit('setUser', newVal);
+      }
+    },
+    pwd: {
+      get() {
+        return this.$store.state.loginform.pwd;
+      },
+      set(newVal) {
+        this.$store.commit("setPwd", newVal);
+      }
+    },
   }
 
 }
