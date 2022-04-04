@@ -184,40 +184,20 @@ export default new Vuex.Store({
     },
     //users的action
     getLogin(context){
-      getLogin().then(res => {
-        console.log(res.data);
-        console.log(1);
-        context.commit('setLogin',{result:res.data})
-        let len = res.data.length;
-        let userNameArr = [];
-        let passWordArr = [];
+      const data = {username:this.state.loginform.user,password:this.state.loginform.pwd};
+      getLogin(data).then((res)=>{
+        console.log(res);
         let ses = window.sessionStorage;
-        for (let i = 0; i < len; i++) {
-          userNameArr.push(res.data[i].username);
-          passWordArr.push(res.data[i].password);
-        }
-        if (userNameArr.indexOf(this.state.loginform.user) === -1) {
-          alert("账号不存在！");
-        } else {
-          const index = userNameArr.indexOf(this.state.loginform.user)
-          if (passWordArr[index] === this.state.loginform.pwd) {
-            // 把token放在sessionStorage中
-            ses.setItem("data", res.data[index].token);
-            console.log(ses,'ses')
-            this.state.title=res.data[index].usertitle
-            //跳转到首页
-            router.push("/Main");
-          } else {
-            alert("密码错误！");
-          }
+        if(res.data.status===1){
+          ses.setItem("data", res.data.token);
+          console.log(ses,'ses')
+          router.push('/Main');
         }
       });
     },
     loginOut(){
       // 注销后 清除session信息 ，并返回登录页
-      console.log(4);
       window.sessionStorage.removeItem('data');
-      console.log(2);
       router.push('/Login');
     }
   },

@@ -51,7 +51,7 @@ export function get(url,params={}){
   })
 }
 // 封装post请求
-export function post(url,data = {}){
+export function post(url,data){
   return new Promise((resolve,reject) => {
     axios.post(url,data)
       .then(response => {

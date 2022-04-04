@@ -32,11 +32,11 @@ export default {
         password:''
       },
       loginRules:{
-        username:[
+        user:[
           {required:true ,message:'请输入用户名',trigger:'blur'},
           {min:5,max:13,message: '长度在5到13个字符之间',trigger: 'blur'}
         ],
-        password:[
+        pwd:[
           {required:true ,message:'请输入登录密码',trigger:'blur'},
           {min:6,max:11,message: '长度在7到11个字符之间',trigger: 'blur'}
         ]
